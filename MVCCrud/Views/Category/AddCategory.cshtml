@@ -1,0 +1,76 @@
+﻿@model Category
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+<h2>AddCategory</h2>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <!-- Öncelikle bu Sayfamızda kullanıcı veri girip bu veriyi servera gönderecegi icin  bu gönderilecek bilgileri Form icerisine almamız gerekir.. Düz Html tag'i kullanabildiginiz gibi Html Helper da kullanabilirsiniz-->
+            <!--
+               Eger BeginForm helperiniz var olan controller'daki var olan aynı isimli Action'ın Post yöntemine gidecek ise hicbir argüman almasına gerek yoktur. Ama isterseniz argüman vererek baska bir Controller'a da hatta baska bir Action'a da yönlendirmeniz mümkündür.
+
+                Unutmayın ki bir Post yöntemindeki Action'a bilgi sadece Form etiketinden gelebilir. Ancak bir Form etiketinin illa Post yapması zorunlu degildir.
+
+                Aynı zamanda bir Html.Helper'i ile cok rahat ModelBinding yapabilirsiniz...
+
+                Sizin Html.Helper'larınız icerisinde For takısı ile biten Helper'lar vardır. Bir Html.Helper'inin For takısı ile bitmesi o ilgili Helper'in linq destekleyebilecegi anlamına gelir...Linq ise sizin ModelBinding'i cok rahat bir şekilde yapmanızı saglar...
+
+                For'suz Helper'ları daha cok ayrı ayrı bilgi göndermek istedigimiz zaman kullanmayı tercih ederiz.
+
+                    Bir Button'un görevi, icerisinde bulundugu Form'u post etmektir. Eger <button></button> tag'i kullanıyorsanız bir attribute yazmanız gerek yoktur... ANcak button'u <input type='' /> seklinde kullanıyorsanız bu Button'un ilgili Form'u post edebilmek icin type'nin button degil submit olması gerekir.
+            -->
+
+            @*<form action="/Category/AddCategory" method="post">
+
+            </form>*@
+
+            <!--
+                
+               Html.BeginForm helper'i  isterseniz icerisine argüman vermeyebileceginiz bir metottur.. Ancak eger BeginForm'a argüman vermezseniz o zaman BeginForm bir button tarafından tetiklendiginde icerisinde bulundugu sayfanın ismiyle aynı olan ACtion'in Post yöntemine gider... Eger farklı bir Post'a göndermek istiyorsanız bunu argümanlarda belirtmeniz gerekir.
+                
+                -->
+
+            @using (Html.BeginForm())
+            {
+                <div>
+                    Kategori İsmi Giriniz
+                </div>
+                <div>
+
+                    @*<input type="text" class="form-control" placeholder="Kategori İsmi Giriniz" name="CategoryName" />*@
+                    
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class="form-control",placeholder="Kategori İsmi giriniz"})
+
+                   
+                </div>
+                <div>
+                    Kategori Acıklaması Giriniz
+                </div>
+                <div>
+                    @*<input type="text" class="form-control" name="Description" />*@
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                </div>
+
+                <button class="btn btn-primary">
+                    Kategori Ekle
+                </button>
+            }
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+    
+

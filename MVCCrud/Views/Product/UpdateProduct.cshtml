@@ -1,0 +1,34 @@
+﻿@model Product
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>UpdateProduct</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.ProductID)
+    <div>
+        Ürün İsmi
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.ProductName)
+    </div>
+    <div>
+        Urun Fiyatı
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.UnitPrice)
+    </div>
+    <div>
+        Urun Stok
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.UnitsInStock)
+    </div>
+    <div>
+        <button class="btn btn-primary">
+            Ürün Güncelle
+        </button>
+    </div>
+}
